@@ -7,7 +7,7 @@ namespace MVCProjects.Services
     public class Class1sService: IClass1sService
     {
         private readonly HttpClient _client;
-        public const string BasePath = "/api/Class1ss/";
+        public const string BasePath = "/api/Class1s/";
 
         public Class1sService(HttpClient client)
         {
@@ -30,7 +30,7 @@ namespace MVCProjects.Services
 
             var response = await responseGet.ReadContentAsync<Class1s>();
 
-            var class1s = new Class1s(response.Id, response.player, response.teams, response.preferdfoot, response.Height, response.weight,response.salary,response.age);
+            var class1s = new Class1s(response.Id, response.player, response.teams, response.preferdfoot, response.Height, response.weight, response.nationality, response.position, response.salary, response.age);
 
             return class1s;
         }

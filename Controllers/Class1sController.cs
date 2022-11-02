@@ -33,7 +33,6 @@ namespace MVCProjects.Controllers
             client.DefaultRequestHeaders.Add("User-Agent", "Jim's API");
         }
 
-        // Example: https://localhost:7256/api/Class1ss
         public async Task<IActionResult> Index()
         {
             var response = await _service.FindAll();
@@ -62,10 +61,10 @@ namespace MVCProjects.Controllers
         // POST: Class1s/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,StudioId,MainCharacterId")] Class1s Class1s)
+        public async Task<IActionResult> Create([Bind("id, player,  teams,  preferdfoot, height, weight, nationailty, position, salary, age")] Class1s class1s)
         {
-            Class1s.Id = null;
-            var resultPost = await client.PostAsync<Class1s>(requestUri, Class1s, new JsonMediaTypeFormatter());
+            class1s.Id = 0;
+            var resultPost = await client.PostAsync<Class1s>(requestUri, class1s, new JsonMediaTypeFormatter());
 
             return RedirectToAction(nameof(Index));
         }
@@ -85,14 +84,14 @@ namespace MVCProjects.Controllers
         // POST: Class1s/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,StudioId, MainCharacterId")] Class1s Class1s)
+        public async Task<IActionResult> Edit(int id, [Bind("id, player,  teams,  preferdfoot, height, weight, nationailty, position, salary, age")] Class1s class1s)
         {
-            if (id != Class1s.Id)
+            if (id != class1s.Id)
             {
                 return NotFound();
             }
 
-            var resultPut = await client.PutAsync<Class1s>(requestUri + Class1s.Id.ToString(), Class1s, new JsonMediaTypeFormatter());
+            var resultPut = await client.PutAsync<Class1s>(requestUri + class1s.Id.ToString(), class1s, new JsonMediaTypeFormatter());
             return RedirectToAction(nameof(Index));
         }
 

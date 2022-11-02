@@ -6549,8 +6549,8 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 				trChild = document.createElement( "div" );
 
 				table.style.cssText = "position:absolute;left:-11111px";
-				tr.style.height = "1px";
-				trChild.style.height = "9px";
+				tr.style.Height = "1px";
+				trChild.style.Height = "9px";
 
 				documentElement
 					.appendChild( table )
@@ -6558,7 +6558,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 					.appendChild( trChild );
 
 				trStyle = window.getComputedStyle( tr );
-				reliableTrDimensionsVal = parseInt( trStyle.height ) > 3;
+				reliableTrDimensionsVal = parseInt( trStyle.Height ) > 3;
 
 				documentElement.removeChild( table );
 			}

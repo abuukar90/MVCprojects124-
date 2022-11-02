@@ -2091,12 +2091,12 @@
     if (isHTMLElement(element) && includeScale) {
       // Fallback to 1 in case both values are `0`
       scaleX = rect.width / element.offsetWidth || 1;
-      scaleY = rect.height / element.offsetHeight || 1;
+      scaleY = rect.Height / element.offsetHeight || 1;
     }
 
     return {
       width: round$1(rect.width / scaleX),
-      height: round$1(rect.height / scaleY),
+      height: round$1(rect.Height / scaleY),
       top: round$1(rect.top / scaleY),
       right: round$1(rect.right / scaleX),
       bottom: round$1(rect.bottom / scaleY),
@@ -2119,8 +2119,8 @@
       width = clientRect.width;
     }
 
-    if (Math.abs(clientRect.height - height) <= 1) {
-      height = clientRect.height;
+    if (Math.abs(clientRect.Height - height) <= 1) {
+      height = clientRect.Height;
     }
 
     return {
@@ -2421,7 +2421,7 @@
       if (placement === top) {
         sideY = bottom; // $FlowFixMe[prop-missing]
 
-        y -= offsetParent[heightProp] - popperRect.height;
+        y -= offsetParent[heightProp] - popperRect.Height;
         y *= gpuAcceleration ? 1 : -1;
       }
 
@@ -2601,7 +2601,7 @@
 
     if (visualViewport) {
       width = visualViewport.width;
-      height = visualViewport.height; // Uses Layout Viewport (like Chrome; Safari does not currently)
+      height = visualViewport.Height; // Uses Layout Viewport (like Chrome; Safari does not currently)
       // In Chrome, it returns a value very close to 0 (+/-) but contains rounding
       // errors due to floating point numbers, so we need to check precision.
       // Safari returns a number <= 0, usually < -1 when pinch-zoomed
@@ -2700,7 +2700,7 @@
       left: rect.x,
       top: rect.y,
       right: rect.x + rect.width,
-      bottom: rect.y + rect.height
+      bottom: rect.y + rect.Height
     });
   }
 
@@ -2711,7 +2711,7 @@
     rect.bottom = rect.top + element.clientHeight;
     rect.right = rect.left + element.clientWidth;
     rect.width = element.clientWidth;
-    rect.height = element.clientHeight;
+    rect.Height = element.clientHeight;
     rect.x = rect.left;
     rect.y = rect.top;
     return rect;
@@ -2754,7 +2754,7 @@
       return accRect;
     }, getClientRectFromMixedType(element, firstClippingParent));
     clippingRect.width = clippingRect.right - clippingRect.left;
-    clippingRect.height = clippingRect.bottom - clippingRect.top;
+    clippingRect.Height = clippingRect.bottom - clippingRect.top;
     clippingRect.x = clippingRect.left;
     clippingRect.y = clippingRect.top;
     return clippingRect;
@@ -2771,21 +2771,21 @@
     var basePlacement = placement ? getBasePlacement(placement) : null;
     var variation = placement ? getVariation(placement) : null;
     var commonX = reference.x + reference.width / 2 - element.width / 2;
-    var commonY = reference.y + reference.height / 2 - element.height / 2;
+    var commonY = reference.y + reference.Height / 2 - element.Height / 2;
     var offsets;
 
     switch (basePlacement) {
       case top:
         offsets = {
           x: commonX,
-          y: reference.y - element.height
+          y: reference.y - element.Height
         };
         break;
 
       case bottom:
         offsets = {
           x: commonX,
-          y: reference.y + reference.height
+          y: reference.y + reference.Height
         };
         break;
 
@@ -3073,9 +3073,9 @@
     }
 
     return {
-      top: overflow.top - rect.height - preventedOffsets.y,
+      top: overflow.top - rect.Height - preventedOffsets.y,
       right: overflow.right - rect.width + preventedOffsets.x,
-      bottom: overflow.bottom - rect.height + preventedOffsets.y,
+      bottom: overflow.bottom - rect.Height + preventedOffsets.y,
       left: overflow.left - rect.width - preventedOffsets.x
     };
   }
@@ -3333,7 +3333,7 @@
   function isElementScaled(element) {
     var rect = element.getBoundingClientRect();
     var scaleX = rect.width / element.offsetWidth || 1;
-    var scaleY = rect.height / element.offsetHeight || 1;
+    var scaleY = rect.Height / element.offsetHeight || 1;
     return scaleX !== 1 || scaleY !== 1;
   } // Returns the composite rect of an element relative to its offsetParent.
   // Composite means it takes into account transforms as well as layout.
@@ -3376,7 +3376,7 @@
       x: rect.left + scroll.scrollLeft - offsets.x,
       y: rect.top + scroll.scrollTop - offsets.y,
       width: rect.width,
-      height: rect.height
+      height: rect.Height
     };
   }
 
@@ -6177,7 +6177,7 @@
         if (target) {
           const targetBCR = target.getBoundingClientRect();
 
-          if (targetBCR.width || targetBCR.height) {
+          if (targetBCR.width || targetBCR.Height) {
             return [Manipulator[offsetMethod](target).top + offsetBase, targetSelector];
           }
         }
@@ -6215,7 +6215,7 @@
     }
 
     _getOffsetHeight() {
-      return this._scrollElement === window ? window.innerHeight : this._scrollElement.getBoundingClientRect().height;
+      return this._scrollElement === window ? window.innerHeight : this._scrollElement.getBoundingClientRect().Height;
     }
 
     _process() {

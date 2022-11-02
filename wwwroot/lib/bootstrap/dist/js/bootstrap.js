@@ -4423,7 +4423,7 @@
         if (target) {
           const targetBCR = target.getBoundingClientRect();
 
-          if (targetBCR.width || targetBCR.height) {
+          if (targetBCR.width || targetBCR.Height) {
             return [Manipulator[offsetMethod](target).top + offsetBase, targetSelector];
           }
         }
@@ -4461,7 +4461,7 @@
     }
 
     _getOffsetHeight() {
-      return this._scrollElement === window ? window.innerHeight : this._scrollElement.getBoundingClientRect().height;
+      return this._scrollElement === window ? window.innerHeight : this._scrollElement.getBoundingClientRect().Height;
     }
 
     _process() {
